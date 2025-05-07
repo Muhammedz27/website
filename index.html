@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muhammed Zaid | Portfolio</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    /* Basic styling for demonstration */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #333;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.5rem;
+    }
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+    section {
+      padding: 2rem;
+    }
+    #home {
+      background: teal;
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    form input, form textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background-color: teal;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #333;
+      color: white;
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        margin-left: 0;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Muhammed Zaid</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="Muhammed.Zaid Resume.-2.pdf" target="_blank">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home" style="position: relative;">
+  <img src="website_qr_code.png" alt="Website QR Code" style="position: absolute; top: 1rem; left: 1rem; width: 100px; height: 100px;">
+  <h2>Welcome to My Website</h2>
+  <p>Graduating Student at Bowie State University</p>
+</section>
+
+  <section id="about">
+  <h2>About Me</h2>
+  <p>I’m Muhammed Zaid, a senior at Bowie State University, working toward a Bachelor of Science in Computer Technology (expected May 2025).I’m eager to apply my technical skills in real-world IT environments.</p>
+
+  <p>Throughout my academic journey, I’ve completed hands-on projects involving Wireshark packet analysis, containerized application deployment with Docker, and vulnerability scanning with patch management. These experiences have strengthened my knowledge of networking, system administration, and cybersecurity best practices.</p>
+
+  <p><strong>Key Skills:</strong></p>
+  <ul>
+    <li>TCP/IP Networking</li>
+    <li>Active Directory</li>
+    <li>Windows, Linux, and Mac OS Troubleshooting</li>
+    <li>Wireshark, Nmap, DNS Configuration</li>
+    <li>Vulnerability Scanning & Patch Management</li>
+    <li>Java and Python Programming</li>
+  </ul>
+</section>
+
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><strong>Portfolio Website:</strong> A personal website showcasing my work.</li>
+      <li><strong>Weather App:</strong> An app that fetches weather data from an API.</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+  <h2>Contact Me</h2>
+  <p><strong>Name:</strong> Muhammed Zaid</p>
+  <p><strong>Email:</strong> <a href="mailto:z.muhammed2002@gmail.com">z.muhammed2002@gmail.com</a></p>
+  <p><strong>Phone:</strong> <a href="tel:+12028124617">202-812-4617</a></p>
+</section>
+
+  <footer>
+    <p>&copy; 2025 Muhammed Zaid. All rights reserved.</p>
+  </footer>
+
+<!-- Chatbot UI -->
+<div id="chatbot" style="position: fixed; bottom: 20px; right: 20px; width: 300px; background: white; border: 1px solid #ccc; padding: 1rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2); font-family: Arial, sans-serif;">
+  <h4 style="margin-bottom: 0.5rem;">Chatbot</h4>
+  <div id="chat-log" style="height: 150px; overflow-y: auto; border: 1px solid #eee; padding: 0.5rem; margin-bottom: 0.5rem; font-size: 0.9rem;"></div>
+  <input type="text" id="user-input" placeholder="Ask me something..." style="width: 100%; padding: 0.5rem;">
+</div>
+
+<script>
+  const chatLog = document.getElementById('chat-log');
+  const userInput = document.getElementById('user-input');
+
+  userInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const question = userInput.value.trim();
+      if (question) {
+        const userMsg = `<div><strong>You:</strong> ${question}</div>`;
+        const botMsg = `<div><strong>Bot:</strong> ${
+          getBotResponse(question)
+        }</div>`;
+        chatLog.innerHTML += userMsg + botMsg;
+        userInput.value = '';
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+    }
+  });
+
+ function getBotResponse(input) {
+  input = input.toLowerCase();
+
+  if (input.includes("hello") || input.includes("hi")) {
+    return "Hello! How can I assist you today?";
+  } else if (input.includes("projects") || input.includes("course")) {
+    return "Some of my course projects include analyzing network packets with Wireshark, deploying containerized applications using Docker on Linux systems, and performing vulnerability scans with patch management and firewall configuration.";
+  } else if (input.includes("education") || input.includes("school") || input.includes("university")) {
+    return "I'm currently a senior at Bowie State University, pursuing a B.S. in Computer Technology with a focus in IT Security. I expect to graduate in May 2025.";
+  } else if (input.includes("skills") || input.includes("technologies")) {
+    return "My key skills include TCP/IP networking, Active Directory, Wireshark, Nmap, Windows/Linux/Mac OS troubleshooting, DNS configuration, Java and Python programming, Hyper-V, and Docker.";
+  } else if (input.includes("resume")) {
+    return "You can view my resume using the Resume link in the navigation bar. Let me know if you'd like a summary of my background!";
+  } else if (input.includes("contact")) {
+    return "You can reach me by email at z.muhammed2002@gmail.com or call me at 202-812-4617.";
+  } else {
+    return "I'm just a simple chatbot for now 😊 Feel free to ask about my projects, skills, education, or contact info!";
+  }
+}
+
+
+</script>
+
+</body>
+</html>
